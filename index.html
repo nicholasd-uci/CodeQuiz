@@ -13,42 +13,20 @@
 
 <body>
 
-<ul id="questions" class="list-group"></ul>
 
 
-
-
-    <h3>Coding Quiz Challenge</h3>
-    <div class="container-fluid">
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    VIEW HIGH SCORE!
-                </div>
-                <div class="col-6">
-
-                    answer should go in this section!
-                    <br><br><br><br>
-
-
-                    <div id="quizButtons">
-                        <button class="previous">Go Back</button> |
-                        <button class="next">Next Question</button> |
-                        <button class="submit">Submit Quiz</button>
-                    </div>
-
-                </div>
-                <div class="col">
-                    <h5><strong>Time Remaining:</strong></h5>
-                    <h5 id="count">75</h5>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-5">
-                </div>
-            </div>
-        </div>
+    <div class="jumbotron">
+        <h1 class="display-4">Hello, world!</h1>
+        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+        <p>Score: <span id="score"></span></p>
+        <hr class="my-4">
+    <div>
+        <button id="startTrivia"class="btn btn-primary btn-lg">Start Quiz</button>
     </div>
+        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+      </div>
+
 
 
 
@@ -63,71 +41,83 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
-
+    <script src="./app.js"></script>
 
 
     <script>
 
+<div>
+    // amount of seconds for the quiz//
+    let count = 75
 
-// amount of seconds for the quiz//
-   let count = 75
+    // decrement amount of time by 1sec and move count down by 1. display time left on screen//
+    let myInterval = setInterval(() => {
+        count--
+        document.getElementById('count').textContent = count
 
-   // decrement amount of time by 1sec and move count down by 1. display time left on screen//
-   let myInterval = setInterval(() => {
-     count--
-     document.getElementById('count').textContent = count
-
-     if (count <= 0) {
-       alert('Time is up!')
-       // stops the interval from running//
-       clearInterval(myInterval)
-   }
- }, 1000)
-
-
-// <div id="playersTotalScore"></div>
-// <div id="quiz"></div>
-
-// const quizContainer = document.getElementById('quiz')
-
-//         const answers = []
-//         const questions = [
-//             {
-//                 question: "Commonly used data types DO NOT include: ",
-//                 answer: {
-//                     A: "strings",
-//                     B: "booleans",
-//                     C: "alerts",
-//                     D: "numbers",
-//                 },
-//                 correctAnswer: "C"
-//             },
-//             {
-//                 question: "The condition in if / else statement is enclosed within___. ",
-//                 answer: {
-//                     A: "quotes",
-//                     B: "curly brackets",
-//                     C: "prenthese",
-//                     D: "square brackets",
-//                 },
-//                 correctAnswer: "B"  
-//             }
-//         ]
+        if (count <= 0) {
+        alert('Time is up!')
+        // stops the interval from running//
+        clearInterval(myInterval)
+    }
+    }, 1000)
 
 
-//     for (let i = 0; i < questions.length; i++) {
-//         let questionsElem = document.createElement('li')
-//         questionsElem.className = 'list-group-item'
-//         questionsElem.textContent = 
-//     }
+</div>
+<div id="quiz"></div>
 
 
 
+        const answers = []
+        let questions = [
+            {
+                question: "Commonly used data types DO NOT include: ",
+                choices: {
+                    A: "strings",
+                    B: "booleans",
+                    C: "alerts",
+                    D: "numbers",
+                },
+                correctAnswer: "C"
+            },
+            {
+                question: "The condition in if / else statement is enclosed within___. ",
+                choices: {
+                    A: "quotes",
+                    B: "curly brackets",
+                    C: "prenthese",
+                    D: "square brackets",
+                },
+                correctAnswer: "B"  
+            },
+            {
+                question: "What is a good name for your style sheet?",
+                choices: {
+                    A: "style.index",
+                    B: "code here",
+                    C: "css",
+                    D: "style.css",
+                },
+                correctAnswer: "D"  
+            }
+        ]
+
+let currentIndex = 0
+let score = 0
+
+    for (let i = 0; i < questions.length; i++) {
+        let questionsElem = document.createElement('buttons')
+        questionsElem.className = 'btn btn-secondary btn-lg'
+        questionsElem.textContent = 
+    }
 
 
 
-//         // event listener//
-//         submitButton.addEventListener('click', showResults)
+    document.getElementById('startTrivia').addEventListener('click', () =>)
+
+
+        // event listener//
+        submitButton.addEventListener('click', showResults)
 
     </script>
 

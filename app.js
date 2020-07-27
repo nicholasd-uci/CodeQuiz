@@ -12,6 +12,6 @@
 
   
 
-  </script>
+  
 </body>
 </html>
