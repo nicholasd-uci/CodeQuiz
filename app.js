@@ -28,11 +28,21 @@ let questions = [
     "True or False",
     "functions",
     "if / else statements"
-  ]}
-  
+    ]
+  },
+  {
+  "question": "what does innerHTMl do?",
+  "correct_answer": "Returns content of an Element",
+  "answers": [
+    "Returns content of an Element",
+    "connects your .css file",
+    "creates a new element",
+    "Calls an Index var"
+    ]
+  }  
 ]
 
-// this is the variable for our questions index//
+// this is the variable for our questions index// it is globally scooped//
 let Index = 0
 
 
@@ -50,23 +60,36 @@ const newQuestion = () => {
   for (let i = 0; i < answers.length; i++) {
     // this is an createElement METHOD! this lets you create clickable answer buttons//
     let answerElem = document.createElement('button')
-    answerElem.className = 'btn btn-info btn-lg'
+    // included the word answer in the btn btn-info. letting me know these are possible answer btn
+    answerElem.className = 'answer btn btn-info btn-lg'
+    // we included this after becuase we needed to grab the answer. This renders each btn seperatily and lets us get the value from each btn. as apposed to text.Conent which only pulls the text. 
+    answerElem.dataset.answer = answers[i]
     answerElem.textContent = answers[i]
+
     document.getElementById('answers').append(answerElem)
   }
 }
 
 
-
-
-
-
-
-
-
 //THIS IS THE START OF THE GAME **linked to the #ID startTrivia
 document.getElementById('startTrivia').addEventListener('click', () => {
   newQuestion()
+})
+
+
+// we need and addeventlistener for the entire page! for when its clicked it will handle the event obj for the information that we are recalling from//
+document.addEventListener('click', event => {
+  // we just included answer in the answer btn btn-info. This links that with a event.target to let us know if they did choose one of them it will console.log the 'Following'// 
+  if (event.target.classList.contains('answer')) {
+    console.log(event.target.dataset.answer)
+    // another condition to check if the Answer they choose ==="MATCHES"=== with the correct answer//
+    if (event.target.dataset.answer === questions[Index].correct_answer) {
+      console.log('correct!')
+    } else {
+      console.log('Ops, Incorrect!')
+    }
+    
+  }
 })
 
 
