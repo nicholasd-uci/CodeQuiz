@@ -50,7 +50,9 @@ const newQuestion = () => {
   for (let i = 0; i < answers.length; i++) {
     // this is an createElement METHOD! this lets you create clickable answer buttons//
     let answerElem = document.createElement('button')
-
+    answerElem.className = 'btn btn-info btn-lg'
+    answerElem.textContent = answers[i]
+    document.getElementById('answers').append(answerElem)
   }
 }
 
