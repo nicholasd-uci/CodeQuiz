@@ -1,3 +1,4 @@
+// This is an array of question//
 let questions = [
   {
     "question": "What document do you use to style an index.HTML file? ",
@@ -31,8 +32,24 @@ let questions = [
   
 ]
 
+// this is the variable for our questions index//
+let questionIndex = 0
 
 
+
+const newQuestion = () => {
+
+}
+
+
+
+
+
+
+
+
+
+//THIS IS THE START OF THE GAME **linked to the #ID startTrivia
 document.getElementById('startTrivia').addEventListener('click', () => {
   
 })
