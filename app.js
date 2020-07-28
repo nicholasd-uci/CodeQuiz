@@ -36,9 +36,9 @@ let questions = [
 let questionIndex = 0
 
 
-
+// takes the current index that we are at, and then should go grab the questions information for us to render//
 const newQuestion = () => {
-
+  document.getElementById(`question`).textContent = questions[questionIndex].question
 }
 
 
@@ -51,7 +51,7 @@ const newQuestion = () => {
 
 //THIS IS THE START OF THE GAME **linked to the #ID startTrivia
 document.getElementById('startTrivia').addEventListener('click', () => {
-  
+  newQuestion()
 })
 
 
