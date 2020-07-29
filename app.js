@@ -121,10 +121,28 @@ const submitScore = highScoreLog => {
   leaderboard.push(highScoreLog)
 
   localStorage.setItem('leaderboard', JSON.stringify(leaderboard))
+
+  leaderboard.sort((a, b ) => {
+    return b.score - a.score
+    })
+
+    let tableElem = document.createElement('table')
+    tableElem.className = 'table'
+    tableElem.innerHTML = `
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">username</th>
+          <th scope="col">score</th>
+        </tr>
+      </thead>
+    `
+    let bodyElem = document.createElement('tbody')
   }
 
+
 //THIS IS THE START OF THE GAME **linked to the #ID startTrivia
-document.getElementById('startTrivia').addEventListener('click', () => {
+document.getElementById('start').addEventListener('click', () => {
   newQuestion()
 })
 
