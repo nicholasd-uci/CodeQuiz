@@ -138,6 +138,22 @@ const submitScore = highScoreLog => {
       </thead>
     `
     let bodyElem = document.createElement('tbody')
+
+    for (let i = 0; i < leaderboard.length; i++) {
+      let rowElem = document.createElement('tr')
+      rowElem.innerHTML = `
+        <th scope="row">${i + 1}</th>
+        <td>${leaderboard[i].username}</td>
+        <td>${leaderboard[i].score}</td>
+
+      `
+      bodyElem.append(rowElem)
+    }
+
+    tableElem.append(bodyElem)
+
+    document.getElementById('trivia').append(tableElem)
+
   }
 
 
