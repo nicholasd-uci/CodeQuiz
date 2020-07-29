@@ -73,6 +73,18 @@ const newQuestion = () => {
 }
 
 
+const gameOver = () => {
+  document.getElementById('game').innerHTML = `
+  <h1 class="display-4">GAME OVER!</h1>
+  <p class="lead"> Your Score Was &rarr; ${playerScore}</p>
+  <hr class="my-4">
+  <p>Good Job you got ${playerScore} Right!</p>
+  <label for="Player's Name"> Enter Player's Intials below:</label>
+  <input type="text" class="form-control" id="playerName">
+  <button class="btn btn-danger">Log High Score!</button>
+  `
+}
+
 //THIS IS THE START OF THE GAME **linked to the #ID startTrivia
 document.getElementById('startTrivia').addEventListener('click', () => {
   newQuestion()
@@ -105,7 +117,7 @@ document.addEventListener('click', event => {
       if (Index < questions.length) {
         newQuestion()
       } else {
-        alert('Game Over!')
+        gameOver()
       }
     }, 1000)
   }
