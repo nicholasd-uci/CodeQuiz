@@ -137,7 +137,7 @@ document.addEventListener('click', event => {
   } else if (event.target.id === 'submitScore') {
     event.preventDefault()
     submitScore({
-      intials: document.getElementById('intials').value,
+      username: document.getElementById('username').value,
       score: score
     })
   }
