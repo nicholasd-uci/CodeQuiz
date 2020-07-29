@@ -45,7 +45,7 @@ let questions = [
 // this is the variable for our questions index// it is globally scooped//
 let Index = 0
 
-let score = 0
+let playerScore = 0
 
 
 // takes the current index that we are at, and then should go grab the questions information for us to render//
@@ -86,6 +86,8 @@ document.addEventListener('click', event => {
     console.log(event.target.dataset.answer)
     // another condition to check if the Answer they choose ==="MATCHES"=== with the correct answer//
     if (event.target.dataset.answer === questions[Index].correct_answer) {
+      playerScore++
+      document.getElementById('playerScore').textContent = playerScore
       let resultsElem = document.createElement('div')
       resultsElem.className = 'alert alert-success'
       resultsElem.textContent = 'Correct Answer'
@@ -103,7 +105,7 @@ document.addEventListener('click', event => {
       if (Index < questions.length) {
         newQuestion()
       } else {
-        prompt('Game Over - "tpye DONE to see high score"')
+        alert('Game Over!')
       }
     }, 1000)
   }
