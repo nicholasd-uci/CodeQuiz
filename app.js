@@ -84,12 +84,26 @@ document.addEventListener('click', event => {
     console.log(event.target.dataset.answer)
     // another condition to check if the Answer they choose ==="MATCHES"=== with the correct answer//
     if (event.target.dataset.answer === questions[Index].correct_answer) {
-      console.log('correct!')
+      let resultsElem = document.createElement('div')
+      resultsElem.className = 'alert alert-success'
+      resultsElem.textContent = 'Correct Answer'
+      document.getElementById('answers').append(resultsElem)
     } else {
-      console.log('Ops, Incorrect!')
+      let resultsElem = document.createElement('div')
+      resultsElem.className = 'alert alert-danger'
+      resultsElem.textContent = 'Ops, that is Incorrect!'
+      document.getElementById('answers').append(resultsElem)
     }
-    
+
+    Index ++
+
+    setTimeout(() => {
+      if (Index < questions.length) {
+        newQuestion()
+      } else {
+        prompt('Game Over - "tpye DONE to see high score"')
+      }
+    }, 1000)
   }
 })
-
 
