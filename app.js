@@ -45,6 +45,8 @@ let questions = [
 // this is the variable for our questions index// it is globally scooped//
 let Index = 0
 
+let score = 0
+
 
 // takes the current index that we are at, and then should go grab the questions information for us to render//
 const newQuestion = () => {
