@@ -21,25 +21,25 @@ let questions = [
     ]
   },
   {
-  "question": "What are booleans?",
-  "correct_answer": "True or False",
-  "answers": [
-    "Strings",
-    "True or False",
-    "functions",
-    "if / else statements"
+    "question": "What are booleans?",
+    "correct_answer": "True or False",
+    "answers": [
+      "Strings",
+      "True or False",
+      "functions",
+      "if / else statements"
     ]
   },
   {
-  "question": "what does innerHTMl do?",
-  "correct_answer": "Returns content of an Element",
-  "answers": [
-    "Returns content of an Element",
-    "connects your .css file",
-    "creates a new element",
-    "Calls an Index var"
+    "question": "what does innerHTMl do?",
+    "correct_answer": "Returns content of an Element",
+    "answers": [
+      "Returns content of an Element",
+      "connects your .css file",
+      "creates a new element",
+      "Calls an Index var"
     ]
-  }  
+  }
 ]
 
 // this is the variable for our questions index// it is globally scooped//
@@ -72,6 +72,32 @@ const newQuestion = () => {
   }
 }
 
+const finalAnswer = answer => {
+  // another condition to check if the Answer they choose ==="MATCHES"=== with the correct answer//
+  if (answer === questions[Index].correct_answer) {
+    playerScore++
+    document.getElementById('playerScore').textContent = playerScore
+    let resultsElem = document.createElement('div')
+    resultsElem.className = 'alert alert-success'
+    resultsElem.textContent = 'Correct Answer'
+    document.getElementById('answers').append(resultsElem)
+  } else {
+    let resultsElem = document.createElement('div')
+    resultsElem.className = 'alert alert-danger'
+    resultsElem.textContent = 'Ops, that is Incorrect!'
+    document.getElementById('answers').append(resultsElem)
+  }
+
+  Index++
+
+  setTimeout(() => {
+    if (Index < questions.length) {
+      newQuestion()
+    } else {
+      gameOver()
+    }
+  }, 1000)
+}
 
 const gameOver = () => {
   document.getElementById('game').innerHTML = `
@@ -79,9 +105,11 @@ const gameOver = () => {
   <p class="lead"> Your Score Was &rarr; ${playerScore}</p>
   <hr class="my-4">
   <p>Good Job you got ${playerScore} Right!</p>
-  <label for="Player's Name"> Enter Player's Intials below:</label>
-  <input type="text" class="form-control" id="playerName">
-  <button class="btn btn-danger">Log High Score!</button>
+  <form>
+      <label for="Player's Name"> Enter Player's Intials below:</label>
+      <input type="text" class="form-control" id="playerName">
+      <button id="submitScore" class="btn btn-danger">Log High Score!</button>
+  </form>
   `
 }
 
@@ -95,31 +123,8 @@ document.getElementById('startTrivia').addEventListener('click', () => {
 document.addEventListener('click', event => {
   // we just included answer in the answer btn btn-info. This links that with a event.target to let us know if they did choose one of them it will console.log the 'Following'// 
   if (event.target.classList.contains('answer')) {
-    console.log(event.target.dataset.answer)
-    // another condition to check if the Answer they choose ==="MATCHES"=== with the correct answer//
-    if (event.target.dataset.answer === questions[Index].correct_answer) {
-      playerScore++
-      document.getElementById('playerScore').textContent = playerScore
-      let resultsElem = document.createElement('div')
-      resultsElem.className = 'alert alert-success'
-      resultsElem.textContent = 'Correct Answer'
-      document.getElementById('answers').append(resultsElem)
-    } else {
-      let resultsElem = document.createElement('div')
-      resultsElem.className = 'alert alert-danger'
-      resultsElem.textContent = 'Ops, that is Incorrect!'
-      document.getElementById('answers').append(resultsElem)
-    }
+    finalAnswer(event.target.dataset.answer)
 
-    Index ++
-
-    setTimeout(() => {
-      if (Index < questions.length) {
-        newQuestion()
-      } else {
-        gameOver()
-      }
-    }, 1000)
   }
 })
 
