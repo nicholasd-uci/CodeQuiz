@@ -44,8 +44,9 @@ let questions = [
 
 // this is the variable for our questions index// it is globally scooped//
 let Index = 0
-
 let playerScore = 0
+let seconds = 100
+let time
 
 
 // takes the current index that we are at, and then should go grab the questions information for us to render//
@@ -159,6 +160,17 @@ const submitScore = highScoreLog => {
 
 //THIS IS THE START OF THE GAME **linked to the #ID startTrivia
 document.getElementById('start').addEventListener('click', () => {
+
+  time = setInterval (() => {
+    seconds--
+    document.getElementById('time').textContent = seconds
+
+    if (seconds < 0) {
+      clearInterval(time)
+      endgame()
+    }
+  }, 1000)
+
   newQuestion()
 })
 
