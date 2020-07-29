@@ -113,6 +113,16 @@ const gameOver = () => {
   `
 }
 
+const submitScore = highScoreLog => {
+  console.log(highScoreLog)
+  
+  let leaderboard = JSON.parse(localStorage.getItem('leaderboard')) || []
+
+  leaderboard.push(highScoreLog)
+
+  localStorage.setItem('leaderboard', JSON.stringify(leaderboard))
+  }
+
 //THIS IS THE START OF THE GAME **linked to the #ID startTrivia
 document.getElementById('startTrivia').addEventListener('click', () => {
   newQuestion()
@@ -124,7 +134,13 @@ document.addEventListener('click', event => {
   // we just included answer in the answer btn btn-info. This links that with a event.target to let us know if they did choose one of them it will console.log the 'Following'// 
   if (event.target.classList.contains('answer')) {
     finalAnswer(event.target.dataset.answer)
-
+  } else if (event.target.id === 'submitScore') {
+    event.preventDefault()
+    submitScore({
+      intials: document.getElementById('intials').value,
+      score: score
+    })
   }
 })
+
 
