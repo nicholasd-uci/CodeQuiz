@@ -1,3 +1,7 @@
+// <!-- **NOTE** I was working on this in a group with others. I have changed variables and tried to play around with the concept and functions. **NOTE**  -->
+
+
+
 // This is an array of question//
 let questions = [
   {
