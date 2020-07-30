@@ -136,9 +136,9 @@ const submitScore = highScoreLog => {
     tableElem.innerHTML = `
       <thead>
         <tr>
-          <th scope="col">#</th>
-          <th scope="col">username</th>
-          <th scope="col">score</th>
+          <th scope="col-2">#</th>
+          <th scope="col-2">username</th>
+          <th scope="col-2">score</th>
         </tr>
       </thead>
     `
@@ -153,6 +153,7 @@ const submitScore = highScoreLog => {
 
       `
       bodyElem.append(rowElem)
+      
     }
 
     tableElem.append(bodyElem)
