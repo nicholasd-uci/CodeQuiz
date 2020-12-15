@@ -5,9 +5,18 @@
 body {
     background-color: grey;
 }
+.jumbotron{
+    text-align: center;
+    margin-top: 15px;
+    margin-left: 25px;
+    margin-right: 25px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
 h1 {
-    text-align: left;
+    text-align: center;
     padding: 20px;
+    color: rgb(65, 95, 179);
     text-decoration: underline;
     text-decoration-style: wavy;
     -moz-text-decoration-style: wavy;

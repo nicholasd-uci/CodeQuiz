@@ -1,6 +1,3 @@
-// <!-- **NOTE** I was working on this in a group with others. I have changed variables and tried to play around with the concept and functions. **NOTE**  -->
-
-
 
 // This is an array of question//
 let questions = [
@@ -46,30 +43,32 @@ let questions = [
   }
 ]
 
-// this is the variable for our questions index// it is globally scooped//
+// This is the variable for our questions index// it is globally scooped//
 let Index = 0
 let playerScore = 0
 let seconds = 100
 let time
 
 
-// takes the current index that we are at, and then should go grab the questions information for us to render//
+// Takes the current index that we are at, and then should go grab the questions information for us to render//
 const newQuestion = () => {
 
-  // this is using the ID call to ??questions in array?? by using the .textContent// then setting it equal to questions array and giving it a LET of Index = 0. Then using .Notation to call for which array you want to pull from.//
+  // This is using the ID call to "questions in array" by using the .textContent & then setting it equal to questions array and giving it a LET of Index = 0. Then using          .Notation to call for which array you want to pull from.//
   document.getElementById(`question`).textContent = questions[Index].question
 
-  // this is calling for a LET var of answers to be calling from the questions array? using .Notation//
+  // This is calling for a LET var of answers to be calling from the questions array? using .Notation//
   let answers = questions[Index].answers
 
-  // this is using the LET answers to be called on. the innerHTML sets or returns the HTML content of an Element** // for loop  let us start at 0 in the index and move up one at time and calling each section of **answers inside of Questions ARRAY!//
+  // This is using the LET answers to be called on. the innerHTML sets or returns the HTML content of an Element** // for loop  let us start at 0 in the index and move up one at time and calling each section of **answers inside of Questions ARRAY!//
   document.getElementById('answers').innerHTML = ''
   for (let i = 0; i < answers.length; i++) {
-    // this is an createElement METHOD! this lets you create clickable answer buttons//
+
+    // This is an createElement METHOD! this lets you create clickable answer buttons//
     let answerElem = document.createElement('button')
-    // included the word answer in the btn btn-info. letting me know these are possible answer btn
+
+    // Included the word answer in the btn btn-info. letting me know these are possible answer btn
     answerElem.className = 'answer btn btn-info btn-lg'
-    // we included this after becuase we needed to grab the answer. This renders each btn seperatily and lets us get the value from each btn. as apposed to text.Conent which only pulls the text. 
+    // We included this after because we needed to grab the answer. This renders each btn separate and lets us get the value from each btn. as apposed to text.Content which only pulls the text. 
     answerElem.dataset.answer = answers[i]
     answerElem.textContent = answers[i]
 
@@ -78,7 +77,7 @@ const newQuestion = () => {
 }
 
 const finalAnswer = answer => {
-  // another condition to check if the Answer they choose ==="MATCHES"=== with the correct answer//
+  // Another condition to check if the Answer they choose ==="MATCHES"=== with the correct answer//
   if (answer === questions[Index].correct_answer) {
     playerScore++
     document.getElementById('playerScore').textContent = playerScore
@@ -111,7 +110,7 @@ const gameOver = () => {
   <hr class="my-4">
   <p>Good Job you got ${playerScore} Right!</p>
   <form>
-      <label for="Player's Name"> Enter Player's Intials below:</label>
+      <label for="Player's Name"> Enter Player's Initials below:</label>
       <input type="text" class="form-control" id="playerName">
       <button id="submitScore" class="btn btn-danger">Log High Score!</button>
   </form>
@@ -180,9 +179,9 @@ document.getElementById('start').addEventListener('click', () => {
 })
 
 
-// we need and addeventlistener for the entire page! for when its clicked it will handle the event obj for the information that we are recalling from//
+// We need and addeventlistener for the entire page! for when its clicked it will handle the event obj for the information that we are recalling from//
 document.addEventListener('click', event => {
-  // we just included answer in the answer btn btn-info. This links that with a event.target to let us know if they did choose one of them it will console.log the 'Following'// 
+  // We just included answer in the answer btn btn-info. This links that with a event.target to let us know if they did choose one of them it will console.log the 'Following'// 
   if (event.target.classList.contains('answer')) {
     finalAnswer(event.target.dataset.answer)
   } else if (event.target.id === 'submitScore') {
