@@ -46,7 +46,7 @@ let questions = [
 // This is the variable for our questions index// it is globally scooped//
 let Index = 0
 let playerScore = 0
-let seconds = 100
+let seconds = 90
 let time
 
 
