@@ -32,7 +32,7 @@ let questions = [
     ]
   },
   {
-    "question": "what does innerHTMl do?",
+    "question": "what does innerHTML do?",
     "correct_answer": "Returns content of an Element",
     "answers": [
       "Returns content of an Element",
