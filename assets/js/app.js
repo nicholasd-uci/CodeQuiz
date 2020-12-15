@@ -188,7 +188,7 @@ document.addEventListener('click', event => {
     event.preventDefault()
     submitScore({
       username: document.getElementById('username').value,
-      score: score
+      playerScore: playerScore
     })
   }
 })
