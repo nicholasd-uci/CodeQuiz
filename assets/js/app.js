@@ -47,7 +47,7 @@ let questions = [
 let Index = 0
 let playerScore = 0
 let seconds = 90
-let time
+let time = -5
 
 
 // Takes the current index that we are at, and then should go grab the questions information for us to render//
@@ -63,10 +63,10 @@ const newQuestion = () => {
   document.getElementById('answers').innerHTML = ''
   for (let i = 0; i < answers.length; i++) {
 
-    // This is an createElement METHOD! this lets you create clickable answer buttons//
+    // This is an createElement METHOD! This lets you create clickable answer buttons//
     let answerElem = document.createElement('button')
 
-    // Included the word answer in the btn btn-info. letting me know these are possible answer btn
+    // Included the word answer in the btn btn-info. 
     answerElem.className = 'answer btn btn-info btn-lg'
     // We included this after because we needed to grab the answer. This renders each btn separate and lets us get the value from each btn. as apposed to text.Content which only pulls the text. 
     answerElem.dataset.answer = answers[i]
@@ -86,6 +86,7 @@ const finalAnswer = answer => {
     resultsElem.textContent = 'Correct Answer'
     document.getElementById('answers').append(resultsElem)
   } else {
+    time-- * 5
     let resultsElem = document.createElement('div')
     resultsElem.className = 'alert alert-danger'
     resultsElem.textContent = 'Ops, that is Incorrect!'
@@ -161,8 +162,7 @@ const submitScore = highScoreLog => {
 
   }
 
-
-//THIS IS THE START OF THE GAME **linked to the #ID startTrivia
+//THIS IS THE START OF THE GAME // /**linked to the #ID start //
 document.getElementById('start').addEventListener('click', () => {
 
   time = setInterval (() => {
@@ -179,9 +179,9 @@ document.getElementById('start').addEventListener('click', () => {
 })
 
 
-// We need and addeventlistener for the entire page! for when its clicked it will handle the event obj for the information that we are recalling from//
+// This is an "addEventListener" for the entire page! Logic for correct / wrong answers 
 document.addEventListener('click', event => {
-  // We just included answer in the answer btn btn-info. This links that with a event.target to let us know if they did choose one of them it will console.log the 'Following'// 
+  // We just included answer in the answer btn btn-info. This links the event.target to let us know if they did choose one of the correct answers. 
   if (event.target.classList.contains('answer')) {
     finalAnswer(event.target.dataset.answer)
   } else if (event.target.id === 'submitScore') {
