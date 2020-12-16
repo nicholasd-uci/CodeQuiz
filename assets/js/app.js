@@ -43,11 +43,12 @@ let questions = [
   }
 ]
 
-// This is the variable for our questions index// it is globally scooped//
+// Game Variables
+//  Globally Scooped Variables
 let Index = 0
 let playerScore = 0
 let seconds = 90
-let time = -5
+let timer
 
 // New Question Function
 // Takes the current index at [I]
@@ -77,6 +78,7 @@ const newQuestion = () => {
   }
 }
 
+// Checking Correct Answer
 const finalAnswer = answer => {
   // Another condition to check if the Answer they choose ==="MATCHES"=== with the correct answer//
   if (answer === questions[Index].correct_answer) {
@@ -104,6 +106,7 @@ const finalAnswer = answer => {
   }, 1000)
 }
 
+// Game Over Function
 const gameOver = () => {
   document.getElementById('game').innerHTML = `
   <h1 class="display-4">GAME OVER!</h1>
@@ -120,16 +123,15 @@ const gameOver = () => {
   `
 }
 
+// HIGH SCORE - Local Storage
 const submitScore = highScoreLog => {
-  console.log(highScoreLog)
   
   let leaderBoard = JSON.parse(localStorage.getItem('leaderboard')) || []
-
   leaderBoard.push(highScoreLog)
-
   localStorage.setItem('leaderboard', JSON.stringify(leaderBoard))
-
+  // Sort Method for All HighScore Players
   leaderBoard.sort((a, b ) => {
+    // a - b sort from least to greatest
     return b.score - a.score
     })
 
@@ -155,23 +157,19 @@ const submitScore = highScoreLog => {
 
       `
       bodyElem.append(rowElem)
-      
     }
-
     tableElem.append(bodyElem)
-
     document.getElementById('game').append(tableElem)
-
   }
 
 //ACTIVATE GAME **linked to the ID "start"
 document.getElementById('start').addEventListener('click', () => {
 
-  time = setInterval (() => {
+  timer = setInterval (() => {
     seconds--
     document.getElementById('time').textContent = seconds
 
-    if (seconds < 0) {
+    if (seconds <= 0) {
       clearInterval(time)
       endgame()
     }
@@ -181,7 +179,8 @@ document.getElementById('start').addEventListener('click', () => {
 })
 
 
-// This is an "addEventListener" for the entire page! Logic for correct / wrong answers 
+// GIVEN an "addEventListener" for the entire page
+// THEN compare logically correct vs wrong answers 
 document.addEventListener('click', event => {
   // We just included answer in the answer btn btn-info. This links the event.target to let us know if they did choose one of the correct answers. 
   if (event.target.classList.contains('answer')) {
