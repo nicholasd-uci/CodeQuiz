@@ -28,29 +28,3 @@ h1 {
     padding: 10px;
     border: solid 2px black;
 }
-/* This was for my HTML only page... slowly learned that I need to do it in a .js file! */
-/* #count {
-    float: center;
-}
-
-.col {
-    text-align: center;
-    border: solid white;
-
-}
-
-.col-6 {
-    text-align: center;
-    border: solid white;
-    padding: 15px;
-    margin: 30px;
-}
-
-#quizButtons {
-    align-items: center;
-    size: 20px;
-    text-align: center;
-    padding: 10px;
-    border: solid yellowgreen;
-    color: wheat;
-} */
