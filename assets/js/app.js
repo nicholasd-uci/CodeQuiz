@@ -140,7 +140,7 @@ const submitScore = highScoreLog => {
       <thead>
         <tr>
           <th scope="col-2">#</th>
-          <th scope="col-2">username</th>
+          <th scope="col-2">playerName</th>
           <th scope="col-2">score</th>
         </tr>
       </thead>
@@ -190,7 +190,7 @@ document.addEventListener('click', event => {
   } else if (event.target.id === 'submitScore') {
     event.preventDefault()
     submitScore({
-      username: document.getElementById('username').value,
+      username: document.getElementById('playerName').value,
       playerScore: playerScore
     })
   }
