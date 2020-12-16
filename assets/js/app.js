@@ -87,7 +87,6 @@ const finalAnswer = answer => {
     resultsElem.textContent = 'Correct Answer'
     document.getElementById('answers').append(resultsElem)
   } else {
-    time-- * 5
     let resultsElem = document.createElement('div')
     resultsElem.className = 'alert alert-danger'
     resultsElem.textContent = 'Ops, that is Incorrect!'
@@ -124,13 +123,13 @@ const gameOver = () => {
 const submitScore = highScoreLog => {
   console.log(highScoreLog)
   
-  let leaderboard = JSON.parse(localStorage.getItem('leaderboard')) || []
+  let leaderBoard = JSON.parse(localStorage.getItem('leaderboard')) || []
 
-  leaderboard.push(highScoreLog)
+  leaderBoard.push(highScoreLog)
 
-  localStorage.setItem('leaderboard', JSON.stringify(leaderboard))
+  localStorage.setItem('leaderboard', JSON.stringify(leaderBoard))
 
-  leaderboard.sort((a, b ) => {
+  leaderBoard.sort((a, b ) => {
     return b.score - a.score
     })
 
@@ -140,19 +139,19 @@ const submitScore = highScoreLog => {
       <thead>
         <tr>
           <th scope="col-2">#</th>
-          <th scope="col-2">playerName</th>
-          <th scope="col-2">score</th>
+          <th scope="col-2">player Name</th>
+          <th scope="col-2">playerScore</th>
         </tr>
       </thead>
     `
     let bodyElem = document.createElement('tbody')
 
-    for (let i = 0; i < leaderboard.length; i++) {
+    for (let i = 0; i < leaderBoard.length; i++) {
       let rowElem = document.createElement('tr')
       rowElem.innerHTML = `
         <th scope="row">${i + 1}</th>
-        <td>${leaderboard[i].username}</td>
-        <td>${leaderboard[i].score}</td>
+        <td>${leaderBoard[i].playerName}</td>
+        <td>${leaderBoard[i].playerScore}</td>
 
       `
       bodyElem.append(rowElem)
@@ -161,7 +160,7 @@ const submitScore = highScoreLog => {
 
     tableElem.append(bodyElem)
 
-    document.getElementById('trivia').append(tableElem)
+    document.getElementById('game').append(tableElem)
 
   }
 
