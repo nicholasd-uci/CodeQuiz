@@ -21,7 +21,7 @@
 
 ![final](./photos/final.PNG)
 
-
+- - -
 ***How many questions?***
 
 > 4 
@@ -37,8 +37,9 @@
 
 ## LINKS
 
-- [Code Quiz Link] Coming Soon!
+- [Code Quiz Link](https://nicholasd-uci.github.io/CodeQuiz/)
 - [Github Repo Link](https://github.com/nicholasd-uci/CodeQuiz)
+- [N.P.R.D GitHub](https://github.com/nicholasd-uci)
 
 - - -
 © 2020 NPRD, Nicholas Paul Ruiz Dallas

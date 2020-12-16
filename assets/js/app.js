@@ -126,9 +126,9 @@ const gameOver = () => {
 // HIGH SCORE - Local Storage
 const submitScore = highScoreLog => {
   
-  let leaderBoard = JSON.parse(localStorage.getItem('leaderboard')) || []
+  let leaderBoard = JSON.parse(localStorage.getItem('leaderBoard')) || []
   leaderBoard.push(highScoreLog)
-  localStorage.setItem('leaderboard', JSON.stringify(leaderBoard))
+  localStorage.setItem('leaderBoard', JSON.stringify(leaderBoard))
   // Sort Method for All HighScore Players
   leaderBoard.sort((a, b ) => {
     // a - b sort from least to greatest
@@ -142,7 +142,7 @@ const submitScore = highScoreLog => {
         <tr>
           <th scope="col-2">#</th>
           <th scope="col-2">player Name</th>
-          <th scope="col-2">playerScore</th>
+          <th scope="col-2">player Score</th>
         </tr>
       </thead>
     `
@@ -177,7 +177,6 @@ document.getElementById('start').addEventListener('click', () => {
 
   newQuestion()
 })
-
 
 // GIVEN an "addEventListener" for the entire page
 // THEN compare logically correct vs wrong answers 
