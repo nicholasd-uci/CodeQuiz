@@ -49,8 +49,9 @@ let playerScore = 0
 let seconds = 90
 let time = -5
 
-
-// Takes the current index that we are at, and then should go grab the questions information for us to render//
+// New Question Function
+// Takes the current index at [I]
+// Then grabs that question from "let questions"
 const newQuestion = () => {
 
   // This is using the ID call to "questions in array" by using the .textContent & then setting it equal to questions array and giving it a LET of Index = 0. Then using          .Notation to call for which array you want to pull from.//
@@ -111,9 +112,11 @@ const gameOver = () => {
   <hr class="my-4">
   <p>Good Job you got ${playerScore} Right!</p>
   <form>
-      <label for="Player's Name"> Enter Player's Initials below:</label>
-      <input type="text" class="form-control" id="playerName">
-      <button id="submitScore" class="btn btn-danger">Log High Score!</button>
+      <div class="form-group">
+        <label for="playerName">Player's Name:</label>
+        <input type="text" class="form-control" id="playerName">
+        <button id="submitScore" class="btn btn-danger">Log High Score!</button>
+      </div>
   </form>
   `
 }
@@ -162,7 +165,7 @@ const submitScore = highScoreLog => {
 
   }
 
-//THIS IS THE START OF THE GAME // /**linked to the #ID start //
+//ACTIVATE GAME **linked to the ID "start"
 document.getElementById('start').addEventListener('click', () => {
 
   time = setInterval (() => {
