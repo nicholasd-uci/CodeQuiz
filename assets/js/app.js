@@ -116,7 +116,7 @@ const gameOver = () => {
   <form>
       <div class="form-group">
         <label for="playerName">Player's Name:</label>
-        <input type="text" class="form-control" id="playerName">
+        <input type="text" id="playerName" class="form-control" >
         <button id="submitScore" class="btn btn-danger">Log High Score!</button>
       </div>
   </form>
@@ -126,12 +126,11 @@ const gameOver = () => {
 // HIGH SCORE - Local Storage
 const submitScore = highScoreLog => {
   
-  let leaderBoard = JSON.parse(localStorage.getItem('leaderBoard')) || []
+  let leaderBoard = JSON.parse(localStorage.getItem('leaderboard')) || []
   leaderBoard.push(highScoreLog)
-  localStorage.setItem('leaderBoard', JSON.stringify(leaderBoard))
+  localStorage.setItem('leaderboard', JSON.stringify(leaderBoard))
   // Sort Method for All HighScore Players
   leaderBoard.sort((a, b ) => {
-    // a - b sort from least to greatest
     return b.score - a.score
     })
 
@@ -168,10 +167,9 @@ document.getElementById('start').addEventListener('click', () => {
   timer = setInterval (() => {
     seconds--
     document.getElementById('time').textContent = seconds
-
-    if (seconds <= 0) {
+    if (seconds < 0) {
       clearInterval(time)
-      endgame()
+      gameOver()
     }
   }, 1000)
 
