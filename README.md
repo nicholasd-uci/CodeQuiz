@@ -37,9 +37,9 @@
 
 ## LINKS
 
-- [Code Quiz Link](https://nicholasd-uci.github.io/CodeQuiz/)
+- [CodeQuiz Deployed](https://nicholasd-uci.github.io/CodeQuiz/)
 - [Github Repo Link](https://github.com/nicholasd-uci/CodeQuiz)
-- [N.P.R.D GitHub](https://github.com/nicholasd-uci)
+- [Nicholas Dallas's GitHub](https://github.com/nicholasd-uci)
 
 - - -
 © 2020 NPRD, Nicholas Paul Ruiz Dallas
